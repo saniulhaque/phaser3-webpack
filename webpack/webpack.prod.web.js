@@ -5,8 +5,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const ZipPlugin = require('zip-webpack-plugin');
 const common = require('./webpack.common.js');
-const config = require('./configs/config.dev');
-const { title } = require('./package.json');
+const config = require('../configs/config.dev');
+const { title } = require('./../package.json');
 
 const version = '0.0.0';
 const copyright = 'example name';
@@ -14,10 +14,13 @@ const copyright = 'example name';
 const setup = {
   mode: 'production',
   output: {
+    path: resolve(__dirname, './../build/web'),
     chunkFilename: 'phaser.js'
   },
   plugins: [
-    new CleanWebpackPlugin(['build/web']),
+    new CleanWebpackPlugin(['./build/web'], {
+      root: resolve(`${__dirname}/../`)
+    }),
     new webpack.BannerPlugin({
       banner: `${title} - ${version} © ${copyright}`
     })

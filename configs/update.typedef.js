@@ -6,7 +6,7 @@ const url =
   'https://raw.githubusercontent.com/photonstorm/phaser3-docs/master/typescript/phaser.d.ts';
 
 const options = {
-  directory: './',
+  directory: './types',
   name: 'phaser.d.ts',
   timeout: 20000
 };
@@ -14,7 +14,8 @@ const options = {
 download(url, options, err => {
   if (err) throw err;
   if (!err)
-    console.log( // eslint-disable-line
+    /* eslint-disable */
+    console.log(
       `${colors.bold(colors.green(options.name))} completed download at location ${colors.bold(
         colors.yellow(options.directory.replace('.', ''))
       )}`

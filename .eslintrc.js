@@ -1,16 +1,22 @@
-const webpackConfig = require('./webpack.common');
+const webpackConfig = require('./webpack/webpack.common');
 
 module.exports = {
   extends: ['airbnb/base', 'prettier'],
   plugins: ['prettier'],
   rules: {
     'prettier/prettier': ['error'],
-    'import/no-extraneous-dependencies': ['error', {
-      devDependencies: true
-    }],
-    'no-plusplus': [2, {
-      allowForLoopAfterthoughts: true
-    }],
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: true
+      }
+    ],
+    'no-plusplus': [
+      2,
+      {
+        allowForLoopAfterthoughts: true
+      }
+    ],
     'global-require': 0
   },
   globals: {
@@ -24,7 +30,7 @@ module.exports = {
     allowImportExportEverywhere: false,
     codeFrame: true
   },
-  'env': {
+  env: {
     browser: true,
     node: true,
     mocha: true
@@ -35,5 +41,5 @@ module.exports = {
         config: webpackConfig
       }
     }
-  },
-}
+  }
+};

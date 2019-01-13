@@ -5,18 +5,19 @@
   "version": "1.2.0",
   "description": "A basic webpack based Phaser 3 template",
   "scripts": {
-    "build:web": "node webpack.prod.web.js",
+    "build:web": "node ./webpack/webpack.prod.web.js",
     "build:plugin": "node webpack.prod.plugin.js",
-    "start": "node webpack.dev.js",
+    "start": "node webpack/webpack.dev.js",
     "test": "mocha",
-    "update:phaser": "npm install phaser@latest --save && node ./configs/update.ts.js"
+    "update:def": "node ./configs/update.typedef.js",
+    "update:phaser": "npm install phaser@latest --save && npm run update:def"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:otorexia/phaser3-webpack.git"
+    "url": "git@github.com:saniulhaque/phaser3-webpack.git"
   },
   "license": "MIT",
-  "author": "Oto Rexia <otorexia@outlook.com> (https://otorexia.github.io)",
+  "author": "Saniul Haque <saniulhaque@outlook.com> (https://saniulhaque.github.io)",
   "devDependencies": {
     "@babel/core": "^7.1.6",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
@@ -41,12 +42,14 @@
     "expose-loader": "^0.7.5",
     "favicons-webpack-plugin": "0.0.9",
     "friendly-errors-webpack-plugin": "^1.7.0",
+    "hard-source-webpack-plugin": "^0.13.1",
     "html-webpack-plugin": "^3.2.0",
     "imagemin-webpack-plugin": "^2.3.0",
     "mocha": "^5.2.0",
     "portfinder": "^1.0.19",
     "prettier": "^1.15.2",
     "raw-loader": "^0.5.1",
+    "speed-measure-webpack-plugin": "^1.2.5",
     "unminified-webpack-plugin": "^2.0.0",
     "webpack": "^4.25.1",
     "webpack-dev-server": "^3.1.10",

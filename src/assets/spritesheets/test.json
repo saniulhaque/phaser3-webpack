@@ -1,0 +1,30 @@
+{
+    "frames": {
+        "logo.1": {
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 412,
+                "h": 93
+            }
+        },
+        "logo": {
+            "frame": {
+                "x": 0,
+                "y": 93,
+                "w": 412,
+                "h": 93
+            }
+        }
+    },
+    "meta": {
+        "app": "phaser3-webpack",
+        "version": "1.2.0",
+        "image": "~test.png",
+        "scale": 1,
+        "size": {
+            "w": 412,
+            "h": 186
+        }
+    }
+}

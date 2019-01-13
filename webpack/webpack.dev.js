@@ -2,18 +2,23 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const WebpackDevServer = require('webpack-dev-server');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+// const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const colors = require('colors/safe');
 const portfinder = require('portfinder');
 const common = require('./webpack.common.js');
-const { url } = require('./package.json');
+const { url } = require('./../package.json');
 
 portfinder.basePort = 4000;
+
+// const smp = new SpeedMeasurePlugin(); // eslint-disable-line
 
 portfinder.getPort((err, finalPort) => {
   if (err) {
     callback(err); // eslint-disable-line
   }
   const compiler = webpack(
+    // smp.wrap(
     merge(common, {
       entry: {
         game: [
@@ -27,6 +32,7 @@ portfinder.getPort((err, finalPort) => {
       devtool: 'source-map',
       mode: 'development',
       plugins: [
+        new HardSourceWebpackPlugin(),
         new FriendlyErrorsWebpackPlugin({
           compilationSuccessInfo: {
             messages: [
@@ -41,6 +47,7 @@ portfinder.getPort((err, finalPort) => {
         })
       ]
     })
+    // )
   );
   const server = new WebpackDevServer(compiler, {
     https: false,

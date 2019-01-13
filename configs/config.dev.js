@@ -1,9 +1,11 @@
 module.exports = {
-  spritesmeeth: false, // control spritesmeeth respinsible for creating spritesheet.
-  // add to array and create new folder in './assets' by the same name to create new spritesheet or copy them to assets
-  spritesheetFolders: [],
+  spritesmeeth: true, // control spritesmeeth respinsible for creating spritesheet.
+  // add to array and create new folder in './assets' by the same name to create new spritesheet
+  spritesheetFolders: ['test'],
+  // copy them to ./src/assets
   autoImportFolders: [],
-  imageMin: true, // control spritesmeeth respinsible for optimizing images.
+  // control imagemin respinsible for optimizing images.
+  imageMin: true,
   imageMinQuality: {
     // Select an optimization level between 0 and 7 || Default: 3
     png: 3,

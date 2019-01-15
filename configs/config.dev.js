@@ -1,4 +1,5 @@
 module.exports = {
+  cache: false,
   spritesmeeth: true, // control spritesmeeth respinsible for creating spritesheet.
   // add to array and create new folder in './assets' by the same name to create new spritesheet
   spritesheetFolders: ['test'],
@@ -22,8 +23,9 @@ module.exports = {
       quality: '95-100'
     }
   },
+  // beware expensive runtime
   logo: {
-    make: true, // turn auto genrate icon off/on
+    make: false, // turn auto genrate icon off/on
     logo: './src/assets/logo.png',
     // background: '#fff',
     icons: {

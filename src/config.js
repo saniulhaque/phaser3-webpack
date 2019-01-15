@@ -1,5 +1,4 @@
 module.exports = {
-  canvas: document.getElementById('game'),
   width: 480,
   height: 720,
   zoom: 1,

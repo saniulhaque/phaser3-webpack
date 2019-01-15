@@ -2,6 +2,7 @@ import resize from './utils/resize';
 import * as config from './config';
 
 function extendConfig(Phaser) {
+  config.canvas = document.getElementById('game');
   const scenes = require('./scenes');
   config.scene = Object.values(scenes);
   config.type = Phaser.AUTO;

@@ -5,11 +5,11 @@ const config = require('./../../src/config');
 let mainWin;
 
 function createmainWindow() {
-  mainWin = new BrowserWindow({ width: config.width, height: config.height });
+  mainWin = new BrowserWindow({ width: config.width * 0.9, height: config.height * 0.9 });
 
   mainWin.loadURL('http://localhost:4000');
   // mainWin.loadFile('dist/index.html');
-  // mainWin.webContents.openDevTools();
+  mainWin.webContents.openDevTools();
 
   mainWin.on('closed', () => {
     mainWin = null;

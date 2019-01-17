@@ -1,15 +1,19 @@
 // const path = require('path');
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, Menu } = require('electron');
 const config = require('./../../src/config');
+const menuTemplate = require('./menu');
 
 let mainWin;
 
 function createmainWindow() {
-  mainWin = new BrowserWindow({ width: config.width * 0.9, height: config.height * 0.9 });
+  mainWin = new BrowserWindow({ width: config.width, height: config.height });
+
+  const menu = Menu.buildFromTemplate(menuTemplate);
+  Menu.setApplicationMenu(menu);
 
   mainWin.loadURL('http://localhost:4000');
   // mainWin.loadFile('dist/index.html');
-  mainWin.webContents.openDevTools();
+  // mainWin.webContents.openDevTools();
 
   mainWin.on('closed', () => {
     mainWin = null;

@@ -7,7 +7,7 @@
   "scripts": {
     "build:web": "node ./webpack/webpack.prod.web.js",
     "build:plugin": "node webpack.prod.plugin.js",
-    "start": "concurrently -n 'Game,Client' -c \"bgGreen.bold,bgBlue.bold\" \"npm run serve\" \"npm run client\"",
+    "start": "concurrently -n \"Game,Client\" -c \"bgGreen.bold,bgBlue.bold\" \"npm run serve\" \"wait-on http://localhost:4000/ && npm run client\"",
     "serve": "node webpack/webpack.dev.js",
     "client": "electron ./client/electron/main.js",
     "client:app": "node ./webpack/webpack.client.js",
@@ -58,6 +58,7 @@
     "unminified-webpack-plugin": "^2.0.0",
     "vue": "^2.5.22",
     "vue-loader": "^15.5.1",
+    "wait-on": "^3.2.0",
     "webpack": "^4.25.1",
     "webpack-dev-server": "^3.1.10",
     "webpack-merge": "^4.1.4",

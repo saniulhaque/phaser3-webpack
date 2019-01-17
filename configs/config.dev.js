@@ -1,6 +1,6 @@
 module.exports = {
   cache: false,
-  spritesmeeth: true, // control spritesmeeth respinsible for creating spritesheet.
+  spritesmeeth: false, // control spritesmeeth respinsible for creating spritesheet.
   // add to array and create new folder in './assets' by the same name to create new spritesheet
   spritesheetFolders: ['test'],
   // copy them to ./src/assets

@@ -4,6 +4,7 @@ const config = require('./../../src/config');
 const menuTemplate = require('./menu');
 
 let mainWin;
+process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = true;
 
 function createmainWindow() {
   mainWin = new BrowserWindow({ width: config.width, height: config.height });

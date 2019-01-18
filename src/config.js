@@ -1,6 +1,6 @@
 module.exports = {
-  width: 400,
-  height: 600,
+  width: 420,
+  height: 640,
   zoom: 1,
   resolution: 1,
   pixelArt: false,

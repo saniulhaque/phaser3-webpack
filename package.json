@@ -2,13 +2,13 @@
   "name": "phaser3-webpack",
   "title": "hello-world",
   "url": "https://github.com/saniulhaque/phaser3-webpack ★★★ ",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A webpack based Phaser 3 template with electron",
   "scripts": {
     "build:web": "node ./webpack/webpack.prod.web.js",
     "start": "concurrently -n \"Game,Client\" -c \"bgGreen.bold,bgBlue.bold\" \"npm run serve\" \"wait-on http://localhost:4000/ && npm run client\"",
     "serve": "node webpack/webpack.dev.js",
-    "client": "electron ./client/electron/main.js",
+    "client": "electron ./client/main.js",
     "test": "mocha",
     "update:def": "node ./configs/update.typedef.js",
     "update:phaser": "npm install phaser@latest --save && npm run update:def"

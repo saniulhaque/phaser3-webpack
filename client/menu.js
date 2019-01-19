@@ -1,23 +1,9 @@
-const config = require('./../../src/config');
+const config = require('../src/config');
 
 let alwaysontop = false;
+let resizable = true;
 
 module.exports = [
-  {
-    label: 'App',
-    submenu: [
-      {
-        type: 'checkbox',
-        label: 'Always On Top',
-        accelerator: 'CmdOrCtrl+T',
-        checked: alwaysontop,
-        click(item, focusedWindow) {
-          alwaysontop = !alwaysontop;
-          if (focusedWindow) focusedWindow.setAlwaysOnTop(alwaysontop);
-        }
-      }
-    ]
-  },
   {
     label: 'View',
     submenu: [
@@ -30,9 +16,29 @@ module.exports = [
       },
       {
         label: 'Toggle Developer Tools',
-        accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
+        accelerator: 'CmdOrCtrl+Shift+I',
         click(item, focusedWindow) {
           if (focusedWindow) focusedWindow.webContents.toggleDevTools();
+        }
+      },
+      {
+        type: 'checkbox',
+        label: 'Always On Top',
+        accelerator: 'CmdOrCtrl+T',
+        checked: alwaysontop,
+        click(item, focusedWindow) {
+          alwaysontop = !alwaysontop;
+          if (focusedWindow) focusedWindow.setAlwaysOnTop(alwaysontop);
+        }
+      },
+      {
+        type: 'checkbox',
+        label: 'Resizable',
+        accelerator: 'CmdOrCtrl+Shift+R',
+        checked: resizable,
+        click(item, focusedWindow) {
+          resizable = !resizable;
+          if (focusedWindow) focusedWindow.setResizable(resizable);
         }
       },
       {
@@ -97,9 +103,27 @@ module.exports = [
     role: 'help',
     submenu: [
       {
-        label: 'Learn More',
+        label: 'Phaser Docs',
         click() {
-          require('electron').shell.openExternal('http://electron.atom.io');
+          require('electron').shell.openExternal('https://photonstorm.github.io/phaser3-docs/');
+        }
+      },
+      {
+        label: 'Phaser examples',
+        click() {
+          require('electron').shell.openExternal('https://labs.phaser.io/');
+        }
+      },
+      {
+        label: 'Phaser World',
+        click() {
+          require('electron').shell.openExternal('https://phaser.io/community/newsletter');
+        }
+      },
+      {
+        label: 'Phaser Forum',
+        click() {
+          require('electron').shell.openExternal('https://phaser.discourse.group/');
         }
       }
     ]

@@ -1,6 +1,6 @@
 // const path = require('path');
 const { app, BrowserWindow, Menu } = require('electron');
-const config = require('./../../src/config');
+const config = require('../src/config');
 const menuTemplate = require('./menu');
 
 let mainWin;
@@ -13,8 +13,20 @@ function createmainWindow() {
   Menu.setApplicationMenu(menu);
 
   mainWin.loadURL('http://localhost:4000');
-  // mainWin.loadFile('dist/index.html');
-  // mainWin.webContents.openDevTools();
+
+  // mainWin.webContents.openDevTools(); // open devTools on startup
+
+  mainWin.on('close', function(e) {
+    var choice = require('electron').dialog.showMessageBox(this, {
+      type: 'question',
+      buttons: ['Yes', 'No'],
+      title: 'Confirm',
+      message: 'Are you sure you want to quit?'
+    });
+    if (choice == 1) {
+      e.preventDefault();
+    }
+  });
 
   mainWin.on('closed', () => {
     mainWin = null;

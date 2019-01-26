@@ -16,14 +16,15 @@ function createmainWindow() {
 
   // mainWin.webContents.openDevTools(); // open devTools on startup
 
+  // eslint-disable-next-line
   mainWin.on('close', function(e) {
-    var choice = require('electron').dialog.showMessageBox(this, {
+    const choice = require('electron').dialog.showMessageBox(this, {
       type: 'question',
       buttons: ['Yes', 'No'],
       title: 'Confirm',
       message: 'Are you sure you want to quit?'
     });
-    if (choice == 1) {
+    if (choice === 1) {
       e.preventDefault();
     }
   });

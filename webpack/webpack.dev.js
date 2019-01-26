@@ -3,12 +3,26 @@ const merge = require('webpack-merge');
 const WebpackDevServer = require('webpack-dev-server');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 // const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
+const os = require('os');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const colors = require('colors/safe');
 const portfinder = require('portfinder');
 const common = require('./webpack.common.js');
 const { url } = require('./../package.json');
 const config = require('./../configs/config.dev');
+
+const interfaces = os.networkInterfaces();
+const addresses = [];
+/* eslint-disable */
+for (const k in interfaces) {
+  for (const k2 in interfaces[k]) {
+    const address = interfaces[k][k2];
+    if (address.family === 'IPv4' && !address.internal) {
+      addresses.push(address.address);
+    }
+  }
+}
+/* eslint-enable */
 
 portfinder.basePort = 4000;
 
@@ -19,7 +33,8 @@ function getPlugins(finalPort) {
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
         messages: [
-          `Game is running here ${colors.bold(colors.blue(`http://localhost:${finalPort}`))}`
+          `Game is running here ${colors.bold(colors.blue(`http://localhost:${finalPort}`))}`,
+          `Local Network address ${colors.bold(colors.blue(`http://${addresses[0]}:${finalPort}`))}`
         ],
         notes: [
           `${colors.inverse(`Project url - ${url}`)}`,
@@ -60,6 +75,8 @@ portfinder.getPort((err, finalPort) => {
     // )
   );
   const server = new WebpackDevServer(compiler, {
+    host: '0.0.0.0',
+    disableHostCheck: true,
     https: false,
     quiet: true,
     stats: {
